@@ -1,0 +1,381 @@
+@import "tailwindcss";
+
+/* =========================================
+   SIPANDA DESIGN TOKENS
+   GRAPHITE - ORANGE - EMERALD
+========================================= */
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    /* Background */
+    --background: #f5f5f3;
+    --foreground: #252525;
+
+    /* Surface */
+    --card: #ffffff;
+    --card-foreground: #252525;
+
+    --popover: #ffffff;
+    --popover-foreground: #252525;
+
+    /* Brand */
+    --primary: #e87524;
+    --primary-foreground: #ffffff;
+
+    --secondary: #efede9;
+    --secondary-foreground: #393631;
+
+    /* Neutral */
+    --muted: #efefed;
+    --muted-foreground: #77736d;
+
+    --accent: #fff0e3;
+    --accent-foreground: #c65d17;
+
+    /* Status */
+    --destructive: #d94343;
+    --destructive-foreground: #ffffff;
+
+    /* Borders */
+    --border: #e7e5e1;
+    --input: #dedbd5;
+    --ring: #ee9b60;
+
+    /* Shape */
+    --radius: 0.85rem;
+
+    /* SIPANDA Brand */
+    --sipanda-graphite: #252525;
+    --sipanda-orange: #e87524;
+    --sipanda-orange-light: #ffad70;
+    --sipanda-emerald: #159b72;
+    --sipanda-cyan: #269eaa;
+    --sipanda-warning: #d99a32;
+
+    /* Elevation */
+    --shadow-soft: 0 2px 12px rgba(40, 35, 28, 0.035);
+    --shadow-card: 0 5px 20px rgba(40, 35, 28, 0.055);
+    --shadow-elevated: 0 12px 35px rgba(40, 35, 28, 0.11);
+  }
+
+  /* =========================================
+     DARK MODE
+  ========================================= */
+
+  .dark {
+    color-scheme: dark;
+
+    /* Background */
+    --background: #111315;
+    --foreground: #f2f2f0;
+
+    /* Surface */
+    --card: #1b1e22;
+    --card-foreground: #f2f2f0;
+
+    --popover: #24272c;
+    --popover-foreground: #f2f2f0;
+
+    /* Brand */
+    --primary: #ff913d;
+    --primary-foreground: #21150c;
+
+    --secondary: #292c30;
+    --secondary-foreground: #e6e4df;
+
+    /* Neutral */
+    --muted: #24272b;
+    --muted-foreground: #a09e98;
+
+    --accent: #38271b;
+    --accent-foreground: #ffad70;
+
+    /* Status */
+    --destructive: #e45b5b;
+    --destructive-foreground: #ffffff;
+
+    /* Borders */
+    --border: #30343a;
+    --input: #383c42;
+    --ring: #ff913d;
+
+    /* SIPANDA Brand */
+    --sipanda-graphite: #f2f2f0;
+    --sipanda-orange: #ff913d;
+    --sipanda-orange-light: #ffb477;
+    --sipanda-emerald: #35c79a;
+    --sipanda-cyan: #48bec4;
+    --sipanda-warning: #edb65c;
+
+    /* Elevation */
+    --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.15);
+    --shadow-card: 0 5px 20px rgba(0, 0, 0, 0.20);
+    --shadow-elevated: 0 12px 35px rgba(0, 0, 0, 0.32);
+  }
+
+  /* =========================================
+     GLOBAL RESET
+  ========================================= */
+
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+    font-family:
+      "Inter",
+      "Segoe UI",
+      Arial,
+      sans-serif;
+
+    min-height: 100vh;
+
+    font-feature-settings:
+      "cv02",
+      "cv03",
+      "cv04",
+      "cv11";
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: rgba(232, 117, 36, 0.22);
+    color: var(--foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+@layer utilities {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #b8b5ae transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #b8b5ae;
+    border-radius: 20px;
+  }
+
+  .dark .custom-scrollbar {
+    scrollbar-color: #51545a transparent;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #51545a;
+  }
+
+  /* =========================================
+     PREMIUM CARD
+  ========================================= */
+
+  .premium-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+
+    transition:
+      background-color 0.3s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .premium-card:hover {
+    border-color: var(--ring);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* =========================================
+     GLASS EFFECT
+  ========================================= */
+
+  .premium-glass {
+    background: color-mix(
+      in srgb,
+      var(--card) 85%,
+      transparent
+    );
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* =========================================
+     SIPANDA HERO GRADIENT
+     ORANGE - GRAPHITE
+  ========================================= */
+
+  .premium-gradient {
+    background: linear-gradient(
+      120deg,
+      #292522 0%,
+      #70401f 55%,
+      #d66b27 100%
+    );
+  }
+
+  .dark .premium-gradient {
+    background: linear-gradient(
+      120deg,
+      #1c1d1f 0%,
+      #442a1b 55%,
+      #9c4b20 100%
+    );
+  }
+
+  /* =========================================
+     TEXT GRADIENT
+  ========================================= */
+
+  .text-gradient {
+    background: linear-gradient(
+      100deg,
+      #e87524,
+      #e9a15e
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* =========================================
+     PREMIUM ORANGE BUTTON
+  ========================================= */
+
+  .premium-button {
+    background: linear-gradient(
+      135deg,
+      #f18b3e,
+      #d9671e
+    );
+
+    color: #ffffff;
+
+    box-shadow:
+      0 4px 14px rgba(232, 117, 36, 0.20);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .premium-button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+
+    box-shadow:
+      0 7px 20px rgba(232, 117, 36, 0.28);
+  }
+
+  /* =========================================
+     SECTION DIVIDER
+  ========================================= */
+
+  .premium-divider {
+    border-color: var(--border);
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY & MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
